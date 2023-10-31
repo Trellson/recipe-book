@@ -1,12 +1,9 @@
 <?php
 
 
-$con=new mysqli('localhost','root','','recipes_crud
-');
+$con = new mysqli('localhost', 'root','', 'recipes_crud');
 
-if($con){
-    echo "Good Connection";
-}else{
+if(!$con){
     echo "Bad Connection";
     die(mysqli_error($con));
 }
