@@ -9,14 +9,14 @@ if (isset($_POST['submit'])) {
   $description = $_POST['description'];
   $ingredients = $_POST['ingredients'];
   $instructions = $_POST['instructions'];
-  $category = $_POST['category'];
+  $catagory = $_POST['catagory'];
   $favorite = isset($_POST['favorite']) ? 1 : 0;
 
   // TODO: Insert recipe into database
 
   // Insert the recipe into the database
-  $sql = "INSERT INTO `recipes` (title, description, ingredients, instructions, category, favorite)
-  VALUES ('$title','$description','$ingredients','$instructions','$category','$favorite')";
+  $sql = "INSERT INTO `recipes` (title, description, ingredients, instructions, catagory, favorite)
+  VALUES ('$title','$description','$ingredients','$instructions','$catagory','$favorite')";
   $result = mysqli_query($con, $sql);
 
   // Check if the query was successful
@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
         <textarea class="form-control" id="instructions" name="instructions" placeholder="Recipe Instructions" rows="5" required></textarea>
       </div>
       <div class="form-group">
-        <label for="category">Category</label>
+        <label for="catagory">Catagory</label>
         <select id="catagory" name="catagory">
           <option value="Breakfast">Breakfast</option>
           <option value="Lunch">Lunch</option>
