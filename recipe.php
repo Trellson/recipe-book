@@ -34,7 +34,7 @@ if(isset($_POST['submit'])){
 
 
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html  >
 
 <head>
   <!-- Required meta tags -->
@@ -42,14 +42,14 @@ if(isset($_POST['submit'])){
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
 
   <title>Recipe book</title>
 </head>
 
 <body>
   <div class="container my-5">
-    <form method="post">
+    <form method="post"
       <div class="form-group">
         <label for="title">Title</label>
         <input type="text" class="form-control" id="title" name="title" placeholder="Recipe Title" required>
@@ -85,8 +85,4 @@ if(isset($_POST['submit'])){
       <button type="submit" class="btn btn-primary" name="submit">Submit</button>
     </form>
   </div>
-
-
-</body>
-
 </html>
