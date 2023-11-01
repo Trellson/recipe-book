@@ -1,31 +1,28 @@
-
 <?php
 // Include the database connection file
 include 'connect.php';
 
 // Check if the form has been submitted
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
   // Get the form data
   $title = $_POST['title'];
   $description = $_POST['description'];
   $ingredients = $_POST['ingredients'];
   $instructions = $_POST['instructions'];
   $category = $_POST['category'];
-  $preparationTime = $_POST['preparationTime'];
-  $cookTime = $_POST['cookTime'];
   $favorite = isset($_POST['favorite']) ? 1 : 0;
 
   // TODO: Insert recipe into database
 
   // Insert the recipe into the database
-  $sql="enter recipe into `recipes_crud`(title, description, ingredients, instructions, category, preparationTime, cookTime, favorite)
-  values('$title','$description','$ingredients','$instructions','$category','$preparationTime','$cookTime','$favorite')";
-  $result=mysqli_query($con,$sql);
+  $sql = "INSERT INTO `recipes` (title, description, ingredients, instructions, category, favorite)
+  VALUES ('$title','$description','$ingredients','$instructions','$category','$favorite')";
+  $result = mysqli_query($con, $sql);
 
   // Check if the query was successful
-  if($result){
+  if ($result) {
     echo "Data inserted correctly";
-  }else{
+  } else {
     echo "something went wrong.";
     die(mysqli_error($con));
   }
@@ -34,7 +31,7 @@ if(isset($_POST['submit'])){
 
 
 <!doctype html>
-<html  >
+<html>
 
 <head>
   <!-- Required meta tags -->
@@ -42,14 +39,14 @@ if(isset($_POST['submit'])){
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap CSS -->
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
 
   <title>Recipe book</title>
 </head>
 
 <body>
   <div class="container my-5">
-    <form method="post"
+    <form method="post">
       <div class="form-group">
         <label for="title">Title</label>
         <input type="text" class="form-control" id="title" name="title" placeholder="Recipe Title" required>
@@ -68,15 +65,12 @@ if(isset($_POST['submit'])){
       </div>
       <div class="form-group">
         <label for="category">Category</label>
-        <input type="text" class="form-control" id="category" name="category" placeholder="Recipe Category" required>
-      </div>
-      <div class="form-group">
-        <label for="preparationTime">Preparation Time (minutes)</label>
-        <input type="number" class="form-control" id="preparationTime" name="preparationTime" placeholder="Preparation Time" required>
-      </div>
-      <div class="form-group">
-        <label for="cookTime">Cook Time (minutes)</label>
-        <input type="number" class="form-control" id="cookTime" name="cookTime" placeholder="Cook Time" required>
+        <select id="catagory" name="catagory">
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Snack">Snack</option>
+        </select>
       </div>
       <div class="form-check">
         <input type="checkbox" class="form-check-input" id="favorite" name="favorite">
@@ -85,4 +79,5 @@ if(isset($_POST['submit'])){
       <button type="submit" class="btn btn-primary" name="submit">Submit</button>
     </form>
   </div>
+
 </html>
