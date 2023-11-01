@@ -1,3 +1,38 @@
+
+<?php
+// Include the database connection file
+include 'connect.php';
+
+// Check if the form has been submitted
+if(isset($_POST['submit'])){
+  // Get the form data
+  $title = $_POST['title'];
+  $description = $_POST['description'];
+  $ingredients = $_POST['ingredients'];
+  $instructions = $_POST['instructions'];
+  $category = $_POST['category'];
+  $preparationTime = $_POST['preparationTime'];
+  $cookTime = $_POST['cookTime'];
+  $favorite = isset($_POST['favorite']) ? 1 : 0;
+
+  // TODO: Insert recipe into database
+
+  // Insert the recipe into the database
+  $sql="enter recipe into `recipes_crud`(title, description, ingredients, instructions, category, preparationTime, cookTime, favorite)
+  values('$title','$description','$ingredients','$instructions','$category','$preparationTime','$cookTime','$favorite')";
+  $result=mysqli_query($con,$sql);
+
+  // Check if the query was successful
+  if($result){
+    echo "Data inserted correctly";
+  }else{
+    echo "something went wrong.";
+    die(mysqli_error($con));
+  }
+}
+?>
+
+
 <!doctype html>
 <html lang="ar" dir="rtl">
 
@@ -47,7 +82,7 @@
         <input type="checkbox" class="form-check-input" id="favorite" name="favorite">
         <label class="form-check-label" for="favorite">Add to Favorites</label>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" name="submit">Submit</button>
     </form>
   </div>
 

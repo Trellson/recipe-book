@@ -1,7 +1,7 @@
 <?php
 
 
-$con = new mysqli('localhost', 'root','', 'recipes_crud');
+$con = new mysqli('localhost', 'root', 'pass', 'recipes_crud');
 
 if(!$con){
     echo "Bad Connection";
